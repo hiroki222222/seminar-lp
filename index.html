@@ -1,0 +1,1969 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI SKILL LAB｜無料AIセミナー｜初心者から始めるAI活用術</title>
+<meta name="description" content="AI初心者でも安心。累計5,000名が参加した無料AIセミナーで、今日から使えるAI活用スキルを身につけましょう。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+/* ========================================
+   RESET & BASE
+   ======================================== */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Noto Sans JP', 'Inter', sans-serif;
+  color: #2d2d2d;
+  line-height: 1.7;
+  background: #ffffff;
+  overflow-x: hidden;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* ========================================
+   TYPOGRAPHY
+   ======================================== */
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
+
+/* ========================================
+   LAYOUT
+   ======================================== */
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: 80px 0;
+}
+
+/* ========================================
+   COLORS & VARIABLES
+   ======================================== */
+:root {
+  --primary: #FF6B35;
+  --primary-dark: #E85A28;
+  --primary-light: #FFF4EF;
+  --accent: #00B894;
+  --accent-light: #E8F8F5;
+  --dark: #1a1a2e;
+  --text: #2d2d2d;
+  --text-light: #666666;
+  --text-muted: #999999;
+  --bg: #ffffff;
+  --bg-gray: #F8F9FA;
+  --bg-dark: #1a1a2e;
+  --border: #E8E8E8;
+  --shadow: 0 4px 20px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.12);
+  --radius: 8px;
+  --radius-sm: 4px;
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-up.delay-1 { transition-delay: 0.1s; }
+.fade-up.delay-2 { transition-delay: 0.2s; }
+.fade-up.delay-3 { transition-delay: 0.3s; }
+.fade-up.delay-4 { transition-delay: 0.4s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.4); }
+  50% { box-shadow: 0 0 0 12px rgba(255, 107, 53, 0); }
+}
+
+@keyframes count-up {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ========================================
+   HEADER
+   ======================================== */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow 0.3s ease;
+}
+
+.header.scrolled {
+  box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  font-size: 20px;
+  color: var(--dark);
+}
+
+.logo-icon {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--primary), #FF8F65);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.header-nav a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-light);
+  transition: color 0.2s;
+}
+
+.header-nav a:hover {
+  color: var(--primary);
+}
+
+.header-cta {
+  background: var(--primary);
+  color: white;
+  padding: 10px 24px;
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.header-cta:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text);
+  padding: 4px;
+}
+
+/* ========================================
+   HERO
+   ======================================== */
+.hero {
+  padding-top: 120px;
+  padding-bottom: 80px;
+  background: linear-gradient(135deg, #FFF8F4 0%, #FFF0E8 30%, #FFF4EF 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255,107,53,0.08) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.hero-inner {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+}
+
+.hero-content {
+  flex: 1;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent-light);
+  color: var(--accent);
+  padding: 6px 16px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.hero-badge i {
+  width: 16px;
+  height: 16px;
+}
+
+.hero-title {
+  font-size: 42px;
+  font-weight: 900;
+  line-height: 1.3;
+  color: var(--dark);
+  margin-bottom: 16px;
+}
+
+.hero-title .highlight {
+  color: var(--primary);
+  position: relative;
+}
+
+.hero-title .highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: rgba(255,107,53,0.15);
+  border-radius: 4px;
+  z-index: -1;
+}
+
+.hero-subtitle {
+  font-size: 17px;
+  color: var(--text-light);
+  margin-bottom: 32px;
+  line-height: 1.8;
+}
+
+.hero-subtitle span {
+  display: inline-block;
+}
+
+.hero-cta-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--primary), #FF8F65);
+  color: white;
+  padding: 16px 36px;
+  border-radius: var(--radius);
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: pulse-glow 2s infinite;
+  text-align: center;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255,107,53,0.35);
+}
+
+.btn-primary i {
+  width: 20px;
+  height: 20px;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  color: var(--text);
+  padding: 16px 28px;
+  border-radius: var(--radius);
+  font-size: 15px;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.hero-stats {
+  display: flex;
+  gap: 32px;
+}
+
+.hero-stat {
+  text-align: center;
+}
+
+.hero-stat-number {
+  font-family: 'Inter', sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1.2;
+}
+
+.hero-stat-number span {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.hero-stat-label {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.hero-image {
+  flex: 1;
+  max-width: 480px;
+  position: relative;
+}
+
+.hero-image img {
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+}
+
+.hero-float-card {
+  position: absolute;
+  background: white;
+  padding: 14px 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  animation: float 3s ease-in-out infinite;
+}
+
+.hero-float-card.card-1 {
+  top: 20px;
+  right: -30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero-float-card.card-2 {
+  bottom: 30px;
+  left: -20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero-float-card .card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-float-card .card-icon.green {
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
+.hero-float-card .card-icon.orange {
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+.hero-float-card .card-text {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.hero-float-card .card-value {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+/* ========================================
+   SECTION HEADERS
+   ======================================== */
+.section-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--dark);
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+.section-desc {
+  font-size: 16px;
+  color: var(--text-light);
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+.section-desc span {
+  display: inline-block;
+}
+
+/* ========================================
+   ABOUT
+   ======================================== */
+.about {
+  background: var(--bg);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.about-image {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.about-image img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
+
+.about-content h3 {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--dark);
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.about-content p {
+  font-size: 15px;
+  color: var(--text-light);
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.about-features {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.about-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.about-feature-icon {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border-radius: 50%;
+  background: var(--accent-light);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-feature-icon i {
+  width: 16px;
+  height: 16px;
+}
+
+.about-feature span {
+  font-size: 15px;
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* ========================================
+   PROBLEM / CONCERN SECTION
+   ======================================== */
+.concern {
+  background: var(--bg-gray);
+}
+
+.concern-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--dark);
+  margin-bottom: 40px;
+  line-height: 1.5;
+}
+
+.concern-title .highlight {
+  color: var(--primary);
+}
+
+.concern-list {
+  max-width: 700px;
+  margin: 0 auto 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.concern-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: white;
+  padding: 20px 24px;
+  border-radius: var(--radius);
+  border-left: 4px solid var(--primary);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.concern-item i {
+  width: 24px;
+  height: 24px;
+  color: var(--primary);
+  min-width: 24px;
+}
+
+.concern-item p {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.concern-answer {
+  text-align: center;
+  background: linear-gradient(135deg, var(--primary), #FF8F65);
+  color: white;
+  padding: 40px;
+  border-radius: 12px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.concern-answer p {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.concern-answer .big {
+  font-size: 28px;
+  font-weight: 900;
+}
+
+/* ========================================
+   SERVICES
+   ======================================== */
+.services {
+  background: var(--bg);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.service-card {
+  background: white;
+  border-radius: 12px;
+  padding: 36px 28px;
+  border: 1px solid var(--border);
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.service-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-icon.orange { background: var(--primary-light); color: var(--primary); }
+.service-icon.green { background: var(--accent-light); color: var(--accent); }
+.service-icon.blue { background: #EBF5FB; color: #2E86C1; }
+
+.service-icon i {
+  width: 28px;
+  height: 28px;
+}
+
+.service-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 12px;
+}
+
+.service-card p {
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 1.7;
+}
+
+/* ========================================
+   WHY CHOOSE US
+   ======================================== */
+.why {
+  background: var(--bg-gray);
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.why-card {
+  background: white;
+  border-radius: 12px;
+  padding: 32px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  border: 1px solid var(--border);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.why-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.why-number {
+  font-family: 'Inter', sans-serif;
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--primary);
+  opacity: 0.2;
+  line-height: 1;
+  min-width: 60px;
+}
+
+.why-card h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 8px;
+}
+
+.why-card p {
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 1.7;
+}
+
+/* ========================================
+   STATS BAR
+   ======================================== */
+.stats-bar {
+  background: var(--bg-dark);
+  padding: 48px 0;
+}
+
+.stats-grid {
+  display: flex;
+  justify-content: center;
+  gap: 64px;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  text-align: center;
+  color: white;
+}
+
+.stat-number {
+  font-family: 'Inter', sans-serif;
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1.2;
+}
+
+.stat-number span {
+  font-size: 20px;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+  margin-top: 4px;
+}
+
+/* ========================================
+   PROCESS
+   ======================================== */
+.process {
+  background: var(--bg);
+}
+
+.process-steps {
+  display: flex;
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.process-step {
+  flex: 1;
+  text-align: center;
+  position: relative;
+}
+
+.process-step::after {
+  content: '';
+  position: absolute;
+  top: 32px;
+  right: -12px;
+  width: 24px;
+  height: 2px;
+  background: var(--border);
+}
+
+.process-step:last-child::after {
+  display: none;
+}
+
+.step-number {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), #FF8F65);
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+.process-step h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 8px;
+}
+
+.process-step p {
+  font-size: 13px;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* ========================================
+   TESTIMONIALS
+   ======================================== */
+.testimonials {
+  background: var(--bg-gray);
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.testimonial-card {
+  background: white;
+  border-radius: 12px;
+  padding: 28px;
+  border: 1px solid var(--border);
+}
+
+.testimonial-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.testimonial-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--bg-gray);
+}
+
+.testimonial-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.testimonial-role {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.testimonial-stars {
+  color: #F9A825;
+  margin-bottom: 12px;
+  display: flex;
+  gap: 2px;
+}
+
+.testimonial-stars i {
+  width: 16px;
+  height: 16px;
+}
+
+.testimonial-card blockquote {
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 1.7;
+}
+
+/* ========================================
+   CTA
+   ======================================== */
+.cta-section {
+  background: linear-gradient(135deg, var(--primary), #FF8F65);
+  padding: 80px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -20%;
+  width: 400px;
+  height: 400px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 50%;
+}
+
+.cta-section::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  right: -10%;
+  width: 300px;
+  height: 300px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 50%;
+}
+
+.cta-content {
+  position: relative;
+  z-index: 1;
+}
+
+.cta-label {
+  display: inline-block;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  padding: 6px 20px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.cta-title {
+  font-size: 36px;
+  font-weight: 900;
+  color: white;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+.cta-desc {
+  font-size: 16px;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 32px;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+}
+
+.cta-desc span {
+  display: inline-block;
+}
+
+.btn-white {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  color: var(--primary);
+  padding: 18px 48px;
+  border-radius: var(--radius);
+  font-size: 17px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-white:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+
+.cta-note {
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  margin-top: 16px;
+}
+
+/* ========================================
+   COMPANY
+   ======================================== */
+.company {
+  background: var(--bg);
+}
+
+.company-table {
+  max-width: 800px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.company-table tr {
+  border-bottom: 1px solid var(--border);
+}
+
+.company-table th {
+  text-align: left;
+  padding: 18px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+  width: 160px;
+  vertical-align: top;
+  background: var(--bg-gray);
+}
+
+.company-table td {
+  padding: 18px 20px;
+  font-size: 15px;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* ========================================
+   CONTACT
+   ======================================== */
+.contact {
+  background: var(--bg-gray);
+}
+
+.contact-form {
+  max-width: 640px;
+  margin: 0 auto;
+  background: white;
+  padding: 48px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.form-group label .required {
+  color: var(--primary);
+  font-size: 12px;
+  margin-left: 4px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  font-family: inherit;
+  color: var(--text);
+  transition: border-color 0.2s;
+  background: var(--bg);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.form-group textarea {
+  height: 120px;
+  resize: vertical;
+}
+
+.form-submit {
+  text-align: center;
+}
+
+.form-submit .btn-primary {
+  width: 100%;
+  max-width: 320px;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+.footer {
+  background: var(--bg-dark);
+  color: white;
+  padding: 60px 0 30px;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-logo {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.footer-desc {
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  max-width: 300px;
+  line-height: 1.7;
+}
+
+.footer-links h4 {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: rgba(255,255,255,0.9);
+}
+
+.footer-links a {
+  display: block;
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 10px;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: var(--primary);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 24px;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+}
+
+/* ========================================
+   FLOATING CTA
+   ======================================== */
+.floating-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: white;
+  padding: 12px 24px;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+  z-index: 999;
+  display: none;
+  text-align: center;
+}
+
+.floating-cta .btn-primary {
+  width: 100%;
+  max-width: 360px;
+  animation: none;
+}
+
+/* ========================================
+   MOBILE NAV OVERLAY
+   ======================================== */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 2000;
+}
+
+.mobile-nav-inner {
+  background: white;
+  width: 280px;
+  height: 100%;
+  padding: 80px 24px 24px;
+  position: relative;
+}
+
+.mobile-nav-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.mobile-nav a {
+  display: block;
+  padding: 14px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+}
+
+.mobile-nav.active {
+  display: block;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 768px) {
+  .container { padding: 0 16px; }
+  .section { padding: 56px 0; }
+
+  .header-nav { display: none; }
+  .mobile-menu-btn { display: block; }
+  .header-cta { display: none; }
+
+  .hero {
+    padding-top: 88px;
+    padding-bottom: 48px;
+  }
+
+  .hero-inner {
+    flex-direction: column;
+    gap: 32px;
+    padding: 0 16px;
+  }
+
+  .hero-title {
+    font-size: 28px;
+    white-space: normal;
+  }
+
+  .hero-subtitle {
+    font-size: 15px;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-primary {
+    width: 100%;
+    padding: 16px 24px;
+  }
+
+  .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-stats {
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .hero-stat-number {
+    font-size: 28px;
+  }
+
+  .hero-image {
+    max-width: 100%;
+    order: -1;
+  }
+
+  .hero-float-card { display: none; }
+
+  .section-title { font-size: 24px; }
+  .section-desc { font-size: 14px; }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .concern-title { font-size: 22px; }
+  .concern-item { padding: 16px; }
+  .concern-answer { padding: 28px 20px; }
+  .concern-answer .big { font-size: 22px; }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .service-card { padding: 28px 20px; }
+
+  .why-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .why-card { padding: 24px; }
+
+  .stats-grid {
+    gap: 24px;
+  }
+
+  .stat-number { font-size: 36px; }
+
+  .process-steps {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .process-step::after { display: none; }
+
+  .process-step {
+    display: flex;
+    text-align: left;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .step-number {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    font-size: 18px;
+    margin: 0;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .cta-title { font-size: 24px; }
+  .cta-desc { font-size: 14px; }
+  .btn-white { padding: 16px 32px; font-size: 15px; width: 100%; justify-content: center; }
+
+  .company-table th {
+    display: block;
+    width: 100%;
+    padding: 12px 16px 4px;
+  }
+
+  .company-table td {
+    display: block;
+    padding: 4px 16px 12px;
+    font-size: 14px;
+  }
+
+  .contact-form {
+    padding: 28px 20px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .floating-cta {
+    display: block;
+  }
+
+  body {
+    padding-bottom: 72px;
+  }
+}
+
+@media (max-width: 390px) {
+  .hero-title { font-size: 24px; }
+  .hero-stat-number { font-size: 24px; }
+  .section-title { font-size: 22px; }
+  .stats-grid { gap: 16px; }
+  .stat-number { font-size: 28px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ====== HEADER ====== -->
+<header class="header" id="header">
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <div class="logo-icon"><i data-lucide="brain"></i></div>
+      AI SKILL LAB
+    </a>
+    <nav class="header-nav">
+      <a href="#about">私たちについて</a>
+      <a href="#services">セミナー内容</a>
+      <a href="#why">選ばれる理由</a>
+      <a href="#process">参加の流れ</a>
+      <a href="#contact">お問い合わせ</a>
+    </nav>
+    <button class="header-cta" onclick="scrollToSection('contact')">無料セミナーに申し込む</button>
+    <button class="mobile-menu-btn" onclick="toggleMobileNav()">
+      <i data-lucide="menu" style="width:24px;height:24px"></i>
+    </button>
+  </div>
+</header>
+
+<!-- ====== MOBILE NAV ====== -->
+<div class="mobile-nav" id="mobileNav" onclick="closeMobileNav(event)">
+  <div class="mobile-nav-inner">
+    <button class="mobile-nav-close" onclick="toggleMobileNav()">
+      <i data-lucide="x" style="width:24px;height:24px"></i>
+    </button>
+    <a href="#about" onclick="toggleMobileNav()">私たちについて</a>
+    <a href="#services" onclick="toggleMobileNav()">セミナー内容</a>
+    <a href="#why" onclick="toggleMobileNav()">選ばれる理由</a>
+    <a href="#process" onclick="toggleMobileNav()">参加の流れ</a>
+    <a href="#testimonials" onclick="toggleMobileNav()">参加者の声</a>
+    <a href="#contact" onclick="toggleMobileNav()">お問い合わせ</a>
+  </div>
+</div>
+
+<!-- ====== HERO ====== -->
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge fade-up">
+        <i data-lucide="sparkles"></i>
+        参加費無料・オンライン開催
+      </div>
+      <h1 class="hero-title fade-up delay-1">
+        <span class="highlight">AI</span>を味方にして、<span class="highlight">キャリア</span>を変える。
+      </h1>
+      <p class="hero-subtitle fade-up delay-2">
+        <span>未経験からでも大丈夫。たった90分で今日から使えるAI活用術を身につけましょう。</span>
+      </p>
+      <div class="hero-cta-group fade-up delay-3">
+        <button class="btn-primary" onclick="scrollToSection('contact')">
+          <i data-lucide="calendar"></i>
+          無料セミナーに参加する
+        </button>
+        <button class="btn-secondary" onclick="scrollToSection('services')">
+          <i data-lucide="play-circle" style="width:18px;height:18px"></i>
+          セミナー内容を見る
+        </button>
+      </div>
+      <div class="hero-stats fade-up delay-4">
+        <div class="hero-stat">
+          <div class="hero-stat-number font-inter">5,000<span>名+</span></div>
+          <div class="hero-stat-label">累計参加者数</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-number font-inter">98<span>%</span></div>
+          <div class="hero-stat-label">満足度</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-number font-inter">300<span>社+</span></div>
+          <div class="hero-stat-label">導入企業数</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-image fade-up delay-2">
+      <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop" alt="セミナーの様子" width="480" height="360">
+      <div class="hero-float-card card-1">
+        <div class="card-icon green"><i data-lucide="trending-up" style="width:20px;height:20px"></i></div>
+        <div>
+          <div class="card-text">受講後のスキルアップ率</div>
+          <div class="card-value font-inter">92%</div>
+        </div>
+      </div>
+      <div class="hero-float-card card-2" style="animation-delay:1.5s">
+        <div class="card-icon orange"><i data-lucide="users" style="width:20px;height:20px"></i></div>
+        <div>
+          <div class="card-text">今月の参加者</div>
+          <div class="card-value font-inter">+248名</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== CONCERN ====== -->
+<section class="section concern" id="concern">
+  <div class="container">
+    <h2 class="concern-title fade-up">
+      こんな<span class="highlight">お悩み</span>ありませんか？
+    </h2>
+    <div class="concern-list">
+      <div class="concern-item fade-up">
+        <i data-lucide="alert-circle"></i>
+        <p>AIが話題だけど、何から始めればいいかわからない</p>
+      </div>
+      <div class="concern-item fade-up delay-1">
+        <i data-lucide="alert-circle"></i>
+        <p>ChatGPTを使ってみたが、業務に活かせていない</p>
+      </div>
+      <div class="concern-item fade-up delay-2">
+        <i data-lucide="alert-circle"></i>
+        <p>周りがAIを活用し始めていて、取り残される不安がある</p>
+      </div>
+      <div class="concern-item fade-up delay-3">
+        <i data-lucide="alert-circle"></i>
+        <p>独学で勉強しようとしたが、挫折してしまった</p>
+      </div>
+    </div>
+    <div class="concern-answer fade-up">
+      <p>そのお悩み、すべて解決します</p>
+      <p class="big">無料セミナーで「使える力」を手に入れましょう</p>
+    </div>
+  </div>
+</section>
+
+<!-- ====== ABOUT ====== -->
+<section class="section about" id="about">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-label">About Us</div>
+      <h2 class="section-title">AI SKILL LABとは</h2>
+      <p class="section-desc">
+        <span>実践的なAIスキルを、誰もが身につけられる環境を提供します。</span>
+      </p>
+    </div>
+    <div class="about-grid">
+      <div class="about-image fade-up">
+        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&h=600&fit=crop" alt="チームミーティングの様子">
+      </div>
+      <div class="about-content fade-up delay-1">
+        <h3>「AIは難しい」を「AIって便利」に変える</h3>
+        <p>AI SKILL LABは、ビジネスパーソンのためのAI活用支援サービスです。専門知識がなくても、たった90分のセミナーで実務に使えるAIスキルが身につきます。</p>
+        <div class="about-features">
+          <div class="about-feature">
+            <div class="about-feature-icon"><i data-lucide="check"></i></div>
+            <span>業界最前線の講師陣による実践型カリキュラム</span>
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon"><i data-lucide="check"></i></div>
+            <span>受講後すぐに業務で使えるテンプレート付き</span>
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon"><i data-lucide="check"></i></div>
+            <span>参加者限定のコミュニティで継続サポート</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== SERVICES ====== -->
+<section class="section services" id="services">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-label">Seminar Content</div>
+      <h2 class="section-title">セミナーで学べること</h2>
+      <p class="section-desc">
+        <span>初心者でもすぐに実践できる3つのテーマをお届けします。</span>
+      </p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-icon orange"><i data-lucide="message-square"></i></div>
+        <h3>ChatGPT実践活用術</h3>
+        <p>プロンプトの書き方から、業務効率を3倍にする具体的なテクニックまで実演形式で学びます。</p>
+      </div>
+      <div class="service-card fade-up delay-1">
+        <div class="service-icon green"><i data-lucide="bar-chart-3"></i></div>
+        <h3>AIデータ分析入門</h3>
+        <p>Excelデータの分析からレポート作成まで、AIを使って時間を大幅に短縮する方法を解説します。</p>
+      </div>
+      <div class="service-card fade-up delay-2">
+        <div class="service-icon blue"><i data-lucide="image"></i></div>
+        <h3>AI画像・動画生成</h3>
+        <p>プレゼン資料やSNS投稿に使える、高品質なビジュアルコンテンツの作り方をお伝えします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== STATS BAR ====== -->
+<section class="stats-bar">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item fade-up">
+        <div class="stat-number font-inter">5,000<span>名+</span></div>
+        <div class="stat-label">累計参加者数</div>
+      </div>
+      <div class="stat-item fade-up delay-1">
+        <div class="stat-number font-inter">98<span>%</span></div>
+        <div class="stat-label">受講者満足度</div>
+      </div>
+      <div class="stat-item fade-up delay-2">
+        <div class="stat-number font-inter">300<span>社+</span></div>
+        <div class="stat-label">導入企業数</div>
+      </div>
+      <div class="stat-item fade-up delay-3">
+        <div class="stat-number font-inter">4.9<span>/5.0</span></div>
+        <div class="stat-label">平均評価</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== WHY CHOOSE US ====== -->
+<section class="section why" id="why">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-label">Why Choose Us</div>
+      <h2 class="section-title">選ばれる4つの理由</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card fade-up">
+        <div class="why-number font-inter">01</div>
+        <div>
+          <h3>完全無料で受講可能</h3>
+          <p>教材費・テキスト代も一切不要。気軽に参加いただける環境を整えています。</p>
+        </div>
+      </div>
+      <div class="why-card fade-up delay-1">
+        <div class="why-number font-inter">02</div>
+        <div>
+          <h3>実務直結のカリキュラム</h3>
+          <p>理論だけでなく、明日からすぐに使える実践的なスキルを重点的にお伝えします。</p>
+        </div>
+      </div>
+      <div class="why-card fade-up delay-2">
+        <div class="why-number font-inter">03</div>
+        <div>
+          <h3>業界トップクラスの講師</h3>
+          <p>大手企業でのAI導入実績を持つ現役コンサルタントが直接指導します。</p>
+        </div>
+      </div>
+      <div class="why-card fade-up delay-3">
+        <div class="why-number font-inter">04</div>
+        <div>
+          <h3>充実のアフターサポート</h3>
+          <p>セミナー後も質問可能な専用コミュニティと、復習用の動画アーカイブを提供します。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== PROCESS ====== -->
+<section class="section process" id="process">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-label">How to Join</div>
+      <h2 class="section-title">参加までの流れ</h2>
+    </div>
+    <div class="process-steps">
+      <div class="process-step fade-up">
+        <div class="step-number font-inter">1</div>
+        <div>
+          <h3>お申し込み</h3>
+          <p>下記フォームから、ご希望の日時を選んでお申し込みください。所要時間は約1分です。</p>
+        </div>
+      </div>
+      <div class="process-step fade-up delay-1">
+        <div class="step-number font-inter">2</div>
+        <div>
+          <h3>参加URLの受信</h3>
+          <p>お申し込み後、ご登録のメールアドレスにZoomリンクと事前資料をお送りします。</p>
+        </div>
+      </div>
+      <div class="process-step fade-up delay-2">
+        <div class="step-number font-inter">3</div>
+        <div>
+          <h3>セミナーに参加</h3>
+          <p>当日はURLをクリックするだけ。顔出し不要・途中退出OKでお気軽にご参加いただけます。</p>
+        </div>
+      </div>
+      <div class="process-step fade-up delay-3">
+        <div class="step-number font-inter">4</div>
+        <div>
+          <h3>実践スタート</h3>
+          <p>セミナーで学んだことを、翌日の業務からすぐに活用できます。特典テンプレート付き。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== TESTIMONIALS ====== -->
+<section class="section testimonials" id="testimonials">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-label">Testimonials</div>
+      <h2 class="section-title">参加者の声</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-header">
+          <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face" alt="参加者">
+          <div>
+            <div class="testimonial-name">田中 美咲さん</div>
+            <div class="testimonial-role">マーケティング職・28歳</div>
+          </div>
+        </div>
+        <div class="testimonial-stars">
+          <i data-lucide="star" fill="currentColor"></i>
+          <i data-lucide="star" fill="currentColor"></i>
+          <i data-lucide="star" fill="currentColor"></i>
+          <i data-lucide="star" fill="currentColor"></i>
+          <i data-lucide="star" fill="currentColor"></i>
+        </div>
+        <blockquote>AIは難しいイメージでしたが、セミナー後にはChatGPTで企画書のたたき台を作れるようになりました。業務時間が大幅に短縮されています。</blockquote>
+      </div>
+      <div class="testimonial-card fade-up delay-1">
+        <div class="testimonial-header">
+          <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="参加者">
+          <div>
+            <div class="testimonial-name">鈴木 健太さん</div>
+            <div class="testimonial-role">営業部門マネージャー・35歳</div>
+          </div>
+        </div>
+        <div class="testimonial-stars">
+          <i data-lucide="star" fill="currentColor"></i>
+          <i data-lucide="star" fill="currentColor"></i>
+          <i data-lucide="star" fill="currentColor"></i>
+          <i data-lucide="star" fill="currentColor"></i>
+          <i data-lucide="star" fill="currentColor"></i>
+        </div>
+        <blockquote>部下への研修として参加させましたが、チーム全体の生産性が目に見えて向上しました。無料でこの質は本当にありがたいです。</blockquote>
+      </div>
+      <div class="testimonial-card fade-up delay-2">
+        <div class="testimonial-header">
+          <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" alt="参加者">
+          <div>
+            <div class="testimonial-name">佐藤 あゆみさん</div>
+            <div class="testimonial-role">フリーランスデザイナー・32歳</div>
+          </div>
+        </div>
+        <div class="testimonial-stars">
+          <i data-lucide="star" fill="currentColor"></i>
+          <i data-lucide="star" fill="currentColor"></i>
+          <i data-lucide="star" fill="currentColor"></i>
+          <i data-lucide="star" fill="currentColor"></i>
+          <i data-lucide="star" fill="currentColor"></i>
+        </div>
+        <blockquote>AI画像生成のパートが特に勉強になりました。クライアントへの提案資料のクオリティが格段に上がり、受注率もアップしています。</blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== CTA ====== -->
+<section class="cta-section" id="cta">
+  <div class="container">
+    <div class="cta-content fade-up">
+      <div class="cta-label">今すぐ無料で参加</div>
+      <h2 class="cta-title">まずは無料セミナーで体験してみませんか？</h2>
+      <p class="cta-desc">
+        <span>参加費は完全無料。オンライン開催なので、全国どこからでもご参加いただけます。</span>
+      </p>
+      <button class="btn-white" onclick="scrollToSection('contact')">
+        <i data-lucide="calendar" style="width:20px;height:20px"></i>
+        無料セミナーに申し込む
+      </button>
+      <p class="cta-note">所要時間わずか1分・営業の連絡は一切ありません</p>
+    </div>
+  </div>
+</section>
+
+<!-- ====== COMPANY ====== -->
+<section class="section company" id="company">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-label">Company</div>
+      <h2 class="section-title">運営会社</h2>
+    </div>
+    <table class="company-table fade-up">
+      <tr><th>会社名</th><td>株式会社AI SKILL LAB</td></tr>
+      <tr><th>設立</th><td>2022年4月</td></tr>
+      <tr><th>代表者</th><td>代表取締役 山田 太郎</td></tr>
+      <tr><th>所在地</th><td>東京都渋谷区神宮前1-2-3 ABCビル5F</td></tr>
+      <tr><th>事業内容</th><td>AI活用研修・コンサルティング事業、法人向けAI導入支援</td></tr>
+      <tr><th>資本金</th><td>1,000万円</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ====== CONTACT ====== -->
+<section class="section contact" id="contact">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-label">Sign Up</div>
+      <h2 class="section-title">無料セミナーお申し込み</h2>
+      <p class="section-desc">
+        <span>以下のフォームにご記入ください。確認メールをお送りいたします。</span>
+      </p>
+    </div>
+    <form class="contact-form fade-up" onsubmit="handleSubmit(event)">
+      <div class="form-group">
+        <label>お名前<span class="required">必須</span></label>
+        <input type="text" placeholder="山田 太郎" required>
+      </div>
+      <div class="form-group">
+        <label>メールアドレス<span class="required">必須</span></label>
+        <input type="email" placeholder="example@mail.com" required>
+      </div>
+      <div class="form-group">
+        <label>電話番号</label>
+        <input type="tel" placeholder="090-1234-5678">
+      </div>
+      <div class="form-group">
+        <label>ご希望の参加日程<span class="required">必須</span></label>
+        <select required>
+          <option value="">日程を選択してください</option>
+          <option>2026年3月22日(日) 10:00〜11:30</option>
+          <option>2026年3月22日(日) 14:00〜15:30</option>
+          <option>2026年3月29日(土) 10:00〜11:30</option>
+          <option>2026年3月29日(土) 14:00〜15:30</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>現在のご職業</label>
+        <select>
+          <option value="">選択してください</option>
+          <option>会社員（正社員）</option>
+          <option>会社員（契約・派遣）</option>
+          <option>経営者・役員</option>
+          <option>フリーランス・自営業</option>
+          <option>学生</option>
+          <option>その他</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>AIの利用経験</label>
+        <select>
+          <option value="">選択してください</option>
+          <option>全くない</option>
+          <option>少しだけ触ったことがある</option>
+          <option>日常的に使用している</option>
+          <option>業務で本格的に活用している</option>
+        </select>
+      </div>
+      <div class="form-submit">
+        <button type="submit" class="btn-primary">
+          <i data-lucide="send" style="width:18px;height:18px"></i>
+          無料セミナーに申し込む
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ====== FOOTER ====== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">AI SKILL LAB</div>
+        <p class="footer-desc">ビジネスパーソンのためのAI活用支援サービス。実践的なスキルを、わかりやすく。</p>
+      </div>
+      <div class="footer-links">
+        <h4>サービス</h4>
+        <a href="#services">セミナー内容</a>
+        <a href="#why">選ばれる理由</a>
+        <a href="#process">参加の流れ</a>
+        <a href="#testimonials">参加者の声</a>
+      </div>
+      <div class="footer-links">
+        <h4>企業情報</h4>
+        <a href="#company">運営会社</a>
+        <a href="#">プライバシーポリシー</a>
+        <a href="#">特定商取引法に基づく表記</a>
+        <a href="#contact">お問い合わせ</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 AI SKILL LAB. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ====== FLOATING CTA (Mobile) ====== -->
+<div class="floating-cta" id="floatingCta">
+  <button class="btn-primary" onclick="scrollToSection('contact')">
+    <i data-lucide="calendar" style="width:18px;height:18px"></i>
+    無料セミナーに参加する
+  </button>
+</div>
+
+<script>
+// Initialize Lucide icons
+lucide.createIcons();
+
+// Intersection Observer for fade-up animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// Header scroll effect
+window.addEventListener('scroll', () => {
+  const header = document.getElementById('header');
+  header.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// Smooth scroll to section
+function scrollToSection(id) {
+  const el = document.getElementById(id);
+  if (el) {
+    const offset = 80;
+    const top = el.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
+}
+
+// Mobile nav
+function toggleMobileNav() {
+  document.getElementById('mobileNav').classList.toggle('active');
+}
+
+function closeMobileNav(e) {
+  if (e.target === document.getElementById('mobileNav')) {
+    toggleMobileNav();
+  }
+}
+
+// Form submit
+function handleSubmit(e) {
+  e.preventDefault();
+  alert('お申し込みありがとうございます！確認メールをお送りしますので、ご確認ください。');
+  e.target.reset();
+}
+</script>
+
+</body>
+</html>
